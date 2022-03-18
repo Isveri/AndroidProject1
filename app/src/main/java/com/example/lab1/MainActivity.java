@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         nazwisko = wpisNazwisko.getText().toString();
         przycisk.setVisibility(View.INVISIBLE);
 
-        Toast blad = Toast.makeText(this,getString(R.string.bledne_dane), Toast.LENGTH_SHORT);
+        Toast blad = Toast.makeText(this, getString(R.string.bledne_dane), Toast.LENGTH_SHORT);
 
         wpisImie.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -75,17 +75,17 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
-            wpisNazwisko.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View view, boolean b) {
-                    nazwisko = wpisNazwisko.getText().toString();
+        wpisNazwisko.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                nazwisko = wpisNazwisko.getText().toString();
                 checkRequiredFields();
                 if (nazwisko.equals("")) {
                     wpisNazwisko.setError(getString(R.string.bledne_dane));
                     blad.show();
                 }
-                }
-            });
+            }
+        });
 //        wpisNazwisko.addTextChangedListener((new TextWatcher() {
 //            @Override
 //            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
     }
+
     private void checkRequiredFields() {
         if (!StringUtils.isEmpty(wpisOcen.getText().toString()) && StringUtils.isNumeric(wpisOcen.getText().toString())) {
             if (!wpisImie.getText().toString().isEmpty() && !wpisNazwisko.getText().toString().isEmpty() && Integer.parseInt(String.valueOf(wpisOcen.getText())) >= 5 && Integer.parseInt(String.valueOf(wpisOcen.getText())) <= 15) {
@@ -168,8 +169,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 przycisk.setVisibility(View.INVISIBLE);
             }
-        }
-        else{
+        } else {
             przycisk.setVisibility((View.INVISIBLE));
         }
     }
