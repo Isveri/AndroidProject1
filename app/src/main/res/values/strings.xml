@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Lab1</string>
+    <string name ="imie">Imie</string>
+    <string name="nazwisko">Nazwisko</string>
+    <string name="wpisz_imie">Wpisz imie</string>
+    <string name="wpisz_nazwisko">Wpisz nazwisko</string>
+    <string name="liczba_ocen">Liczba ocen:</string>
+    <string name="wpisz_liczbe_ocen_5_15">Wpisz liczbe ocen [5–15]</string>
+    <string name="button">Button</string>
+
+</resources>
