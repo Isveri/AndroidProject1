@@ -1,80 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/imieWpis"
+        android:layout_width="358dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="59dp"
+        android:ems="10"
+        android:hint="@string/wpisz_imie"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/liczbaOcen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="165dp"
+        android:text="@string/liczba_ocen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/imie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/imie" />
-
-        <EditText
-            android:id="@+id/imieWpis"
-
-            android:layout_width="381dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/wpisz_imie"
-            android:inputType="textPersonName" />
-
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/nazwisko"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="118dp"
+        android:text="@string/nazwisko"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/nazwisko"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/nazwisko" />
+    <TextView
+        android:id="@+id/imie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="75dp"
+        android:text="@string/imie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/nazwiskoWpis"
-            android:layout_width="349dp"
-            android:layout_height="48dp"
-            android:ems="10"
-            android:hint="@string/wpisz_nazwisko"
-            android:inputType="textPersonName" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/liczbaOcen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="@string/liczba_ocen" />
-
-        <EditText
-            android:id="@+id/ocenyWpis"
-            android:layout_width="331dp"
-            android:layout_height="49dp"
-            android:ems="10"
-            android:hint="@string/wpisz_liczbe_ocen_5_15"
-            android:inputType="textPersonName" />
-
-    </LinearLayout>
+    <EditText
+        android:id="@+id/nazwiskoWpis"
+        android:layout_width="328dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="102dp"
+        android:ems="10"
+        android:hint="@string/wpisz_nazwisko"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="match_parent"
+        android:layout_width="394dp"
         android:layout_height="55dp"
-        android:text="@string/button" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="216dp"
+        android:text="@string/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible" />
 
-</LinearLayout>
+    <EditText
+        android:id="@+id/ocenyWpis"
+        android:layout_width="314dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="151dp"
+        android:ems="10"
+        android:hint="@string/wpisz_liczbe_ocen_5_15"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
