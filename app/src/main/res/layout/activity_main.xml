@@ -8,10 +8,10 @@
 
     <EditText
         android:id="@+id/imieWpis"
-        android:layout_width="358dp"
+        android:layout_width="355dp"
         android:layout_height="48dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="59dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/wpisz_imie"
         android:inputType="textPersonName"
@@ -23,65 +23,69 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="165dp"
+        android:layout_marginEnd="18dp"
         android:text="@string/liczba_ocen"
+        app:layout_constraintBottom_toBottomOf="@+id/ocenyWpis"
+        app:layout_constraintEnd_toStartOf="@+id/ocenyWpis"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/nazwiskoWpis" />
 
     <TextView
         android:id="@+id/nazwisko"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="118dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/nazwisko"
+        app:layout_constraintBottom_toBottomOf="@+id/nazwiskoWpis"
+        app:layout_constraintEnd_toStartOf="@+id/nazwiskoWpis"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imieWpis" />
 
     <TextView
         android:id="@+id/imie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginEnd="14dp"
         android:text="@string/imie"
+        app:layout_constraintBottom_toTopOf="@+id/nazwiskoWpis"
+        app:layout_constraintEnd_toStartOf="@+id/imieWpis"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imieWpis" />
 
     <EditText
         android:id="@+id/nazwiskoWpis"
-        android:layout_width="328dp"
+        android:layout_width="324dp"
         android:layout_height="48dp"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="102dp"
         android:ems="10"
         android:hint="@string/wpisz_nazwisko"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imieWpis" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="394dp"
+        android:layout_width="398dp"
         android:layout_height="55dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="216dp"
         android:text="@string/button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ocenyWpis"
         tools:visibility="invisible" />
 
     <EditText
         android:id="@+id/ocenyWpis"
-        android:layout_width="314dp"
-        android:layout_height="49dp"
+        android:layout_width="304dp"
+        android:layout_height="48dp"
         android:layout_marginStart="95dp"
-        android:layout_marginTop="151dp"
         android:ems="10"
         android:hint="@string/wpisz_liczbe_ocen_5_15"
         android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/nazwiskoWpis" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
