@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         nazwisko = wpisNazwisko.getText().toString();
         przycisk.setVisibility(View.INVISIBLE);
 
-        Toast blad = Toast.makeText(this,"Niepoprawne dane", Toast.LENGTH_SHORT);
+        Toast blad = Toast.makeText(this,getString(R.string.bledne_dane), Toast.LENGTH_SHORT);
 
         wpisImie.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 imie = wpisImie.getText().toString();
                 checkRequiredFields();
                 if (imie.equals("")) {
-                    wpisImie.setError("Niepoprawne dane");
+                    wpisImie.setError(getString(R.string.bledne_dane));
                     blad.show();
                 }
             }
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     nazwisko = wpisNazwisko.getText().toString();
                 checkRequiredFields();
                 if (nazwisko.equals("")) {
-                    wpisNazwisko.setError("Niepoprawne dane");
+                    wpisNazwisko.setError(getString(R.string.bledne_dane));
                     blad.show();
                 }
                 }
@@ -115,14 +115,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (wpisOcen.getText().toString().equals("") || !StringUtils.isNumeric(wpisOcen.getText().toString())) {
-                    wpisOcen.setError("Niepoprawne dane");
+                    wpisOcen.setError(getString(R.string.bledne_dane));
                     blad.show();
                     checkRequiredFields();
                 } else {
                     liczbaOcen = Integer.parseInt(String.valueOf(wpisOcen.getText()));
                     checkRequiredFields();
                     if (liczbaOcen < 5 || liczbaOcen > 15) {
-                        wpisOcen.setError("Niepoprawne dane");
+                        wpisOcen.setError(getString(R.string.bledne_dane));
                         blad.show();
                     }
                 }

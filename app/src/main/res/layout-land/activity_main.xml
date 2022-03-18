@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Wpisz imie"
+            android:hint="@string/wpisz_imie"
             android:inputType="textPersonName" />
 
     </LinearLayout>
@@ -37,14 +37,14 @@
             android:id="@+id/nazwisko"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nazwisko:" />
+            android:text="@string/nazwisko" />
 
         <EditText
             android:id="@+id/nazwiskoWpis"
             android:layout_width="328dp"
             android:layout_height="48dp"
             android:ems="10"
-            android:hint="Wpisz nazwisko"
+            android:hint="@string/wpisz_nazwisko"
             android:inputType="textPersonName" />
 
     </LinearLayout>
@@ -59,14 +59,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Liczba ocen:" />
+            android:text="@string/liczba_ocen" />
 
         <EditText
             android:id="@+id/ocenyWpis"
             android:layout_width="314dp"
             android:layout_height="49dp"
             android:ems="10"
-            android:hint="Wpisz liczbe ocen [5-15]"
+            android:hint="@string/wpisz_liczbe_ocen_5_15"
             android:inputType="textPersonName" />
 
     </LinearLayout>
@@ -75,6 +75,6 @@
         android:id="@+id/button"
         android:layout_width="394dp"
         android:layout_height="55dp"
-        android:text="Button" />
+        android:text="@string/button" />
 
 </LinearLayout>

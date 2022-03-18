@@ -6,6 +6,7 @@
     <string name="wpisz_nazwisko">Wpisz nazwisko</string>
     <string name="liczba_ocen">Liczba ocen:</string>
     <string name="wpisz_liczbe_ocen_5_15">Wpisz liczbe ocen [5–15]</string>
-    <string name="button">Button</string>
+    <string name="button">Oceny</string>
+    <string name="bledne_dane">Niepoprawne dane</string>
 
 </resources>
