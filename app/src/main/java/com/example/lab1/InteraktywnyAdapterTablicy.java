@@ -22,8 +22,8 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
     private List<ModelOceny> mListaOcen;
     private LayoutInflater mPompka;
     private RadioGroup lastCheckedRadioGroup = null;
-    private AdapterView.OnItemClickListener onItemClickListener;
-    //String[] przedmioty = getResources().getStringArray(R.array.przedmioty);
+   // private AdapterView.OnItemClickListener onItemClickListener;
+
 
     public InteraktywnyAdapterTablicy(List<ModelOceny> listaOcen,Activity kontekst){
         mPompka = kontekst.getLayoutInflater();
@@ -56,9 +56,9 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
         return mListaOcen.size();
     }
 
-    public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
-    }
+//    public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
+//        this.onItemClickListener = onItemClickListener;
+//    }
 
 
 

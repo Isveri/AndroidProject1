@@ -1,9 +1,16 @@
 package com.example.lab1;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -42,6 +49,51 @@ public class MainActivity extends AppCompatActivity {
         przycisk.setVisibility(View.INVISIBLE);
 
         Toast blad = Toast.makeText(this, getString(R.string.bledne_dane), Toast.LENGTH_SHORT);
+
+
+        ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == 3) {
+                            przycisk.setText(getString(R.string.zdane));
+                            przycisk.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    new AlertDialog.Builder(MainActivity.this)
+                                            .setTitle("Wynik")
+                                            .setMessage(getString(R.string.gratulacje))
+                                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    finish();
+                                                    }})
+                                            .setIcon(android.R.drawable.ic_dialog_info)
+                                            .show();
+
+
+                                }
+                            });
+                        } else if(result.getResultCode() == 2) {
+                            przycisk.setText(getString(R.string.fail));
+                            przycisk.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    new AlertDialog.Builder(MainActivity.this)
+                                            .setTitle("Wynik")
+                                            .setMessage(getString(R.string.warunek))
+                                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    finish();
+                                                }})
+                                            .setIcon(android.R.drawable.ic_dialog_info)
+                                            .show();
+
+                                }
+                            });
+                        }
+                    }
+                });
 
         wpisImie.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -138,12 +190,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intencja = new Intent(MainActivity.this,SecondActivity.class);
                 intencja.putExtra("liczbaOcen",liczbaOcen);
-                startActivity(intencja);
-                //startActivityForResult(intencja,5);
-//                addRadioButtons(liczbaOcen);
+                activityResultLaunch.launch(intencja);
+//                startActivity(intencja);
 
             }
         });
+
 
 //        wpisOcen.addTextChangedListener(new TextWatcher() {
 //            @Override
@@ -177,15 +229,6 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
-//    public void addRadioButtons(Integer k){
-//        RadioGroup rdGrp = (RadioGroup) findViewById(R.id.radioGroup);
-//        for (int i = 1; i <= k; i++){
-//            RadioButton rbtn = new RadioButton(this);
-//            rbtn.setId(i);
-//            rbtn.setText(przedmioty[i]);
-//            rdGrp.addView(rbtn);
-//        }
-//    }
     private void checkRequiredFields() {
         if (!StringUtils.isEmpty(wpisOcen.getText().toString()) && StringUtils.isNumeric(wpisOcen.getText().toString())) {
             if (!wpisImie.getText().toString().isEmpty() && !wpisNazwisko.getText().toString().isEmpty() && Integer.parseInt(String.valueOf(wpisOcen.getText())) >= 5 && Integer.parseInt(String.valueOf(wpisOcen.getText())) <= 15) {

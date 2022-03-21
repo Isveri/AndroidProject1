@@ -7,7 +7,12 @@
     <string name="wpisz_nazwisko">Wpisz nazwisko</string>
     <string name="wpisz_liczbe_ocen_5_15">Wpisz liczbe ocen [5–15]</string>
     <string name="button">Oceny</string>
+    <string name="obliczSrBTN">OBLICZ SREDNIA</string>
     <string name="bledne_dane">Niepoprawne dane</string>
+    <string name="fail">Tym razem mi nie poszlo</string>
+    <string name="gratulacje">Gratulacje! Otrzymujesz zaliczenie!</string>
+    <string name="warunek">Wysyłam podanie o zaliczenie warunkowe</string>
+    <string name="zdane">Super!</string>
     <string name="dwa">2</string>
     <string name="trzy">3</string>
     <string name="cztery">4</string>
