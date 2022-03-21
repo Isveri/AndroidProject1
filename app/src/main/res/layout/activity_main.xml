@@ -73,7 +73,8 @@
         android:text="@string/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ocenyWpis"
+        app:layout_constraintTop_toBottomOf="@+id/sredniaTxt"
+        tools:layout_editor_absoluteY="154dp"
         tools:visibility="invisible" />
 
     <EditText
@@ -87,5 +88,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nazwiskoWpis" />
+
+    <TextView
+        android:id="@+id/sredniaTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ocenyWpis"
+        app:layout_constraintVertical_bias="0.789"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
