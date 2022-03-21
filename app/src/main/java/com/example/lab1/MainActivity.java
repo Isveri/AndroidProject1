@@ -24,10 +24,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    String imie;
-    String nazwisko;
-    int liczbaOcen;
-    //String[] przedmioty = getResources().getStringArray(R.array.przedmioty);
+    private String imie;
+    private String nazwisko;
+    private int liczbaOcen;
+    private Double srednia;
 
     EditText wpisOcen;
     EditText wpisImie;
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         przycisk = findViewById(R.id.button);
 
 
+
         imie = wpisImie.getText().toString();
         nazwisko = wpisNazwisko.getText().toString();
         przycisk.setVisibility(View.INVISIBLE);
@@ -56,13 +57,17 @@ public class MainActivity extends AppCompatActivity {
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == 3) {
+
+                        Bundle ext = result.getData().getExtras();
+                        srednia = ext.getDouble("srednia");
+
+                        if (result.getResultCode() == 3 && srednia>3.0) {
                             przycisk.setText(getString(R.string.zdane));
                             przycisk.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     new AlertDialog.Builder(MainActivity.this)
-                                            .setTitle("Wynik")
+                                            .setTitle(getString(R.string.wynik))
                                             .setMessage(getString(R.string.gratulacje))
                                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -74,13 +79,13 @@ public class MainActivity extends AppCompatActivity {
 
                                 }
                             });
-                        } else if(result.getResultCode() == 2) {
+                        } else if(result.getResultCode() == 2 && srednia<3.0) {
                             przycisk.setText(getString(R.string.fail));
                             przycisk.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     new AlertDialog.Builder(MainActivity.this)
-                                            .setTitle("Wynik")
+                                            .setTitle(R.string.wynik)
                                             .setMessage(getString(R.string.warunek))
                                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -191,7 +196,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intencja = new Intent(MainActivity.this,SecondActivity.class);
                 intencja.putExtra("liczbaOcen",liczbaOcen);
                 activityResultLaunch.launch(intencja);
-//                startActivity(intencja);
 
             }
         });
