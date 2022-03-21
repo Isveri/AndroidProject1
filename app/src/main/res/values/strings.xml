@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Lab1</string>
-    <string name ="imie">Imie</string>
+    <string name="imie">Imie</string>
     <string name="wpisz_imie">Wpisz imie</string>
     <string name="liczba_ocen">Liczba ocen</string>
     <string name="nazwisko">Nazwisko:</string>
@@ -8,5 +8,27 @@
     <string name="wpisz_liczbe_ocen_5_15">Wpisz liczbe ocen [5–15]</string>
     <string name="button">Oceny</string>
     <string name="bledne_dane">Niepoprawne dane</string>
+    <string name="dwa">2</string>
+    <string name="trzy">3</string>
+    <string name="cztery">4</string>
+    <string name="piec">5</string>
+    <string name="ang">ang</string>
+    <string-array name="przedmioty">
+        <item>Ang</item>
+        <item>Fiz</item>
+        <item>Polski</item>
+        <item>Mat</item>
+        <item>WF</item>
+        <item>Chem</item>
+        <item>Wos</item>
+        <item>Hist</item>
+        <item>Muzyka</item>
+        <item>PP</item>
+        <item>Biol</item>
+        <item>Rosyjki</item>
+        <item>BHP</item>
+        <item>Inf</item>
+        <item>Plastyka</item>
+    </string-array>
 
 </resources>

@@ -2,12 +2,15 @@ package com.example.lab1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
@@ -17,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     String imie;
     String nazwisko;
     int liczbaOcen;
+    //String[] przedmioty = getResources().getStringArray(R.array.przedmioty);
 
     EditText wpisOcen;
     EditText wpisImie;
@@ -129,6 +133,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        przycisk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intencja = new Intent(MainActivity.this,SecondActivity.class);
+                intencja.putExtra("liczbaOcen",liczbaOcen);
+                startActivity(intencja);
+                //startActivityForResult(intencja,5);
+//                addRadioButtons(liczbaOcen);
+
+            }
+        });
 
 //        wpisOcen.addTextChangedListener(new TextWatcher() {
 //            @Override
@@ -162,6 +177,15 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
+//    public void addRadioButtons(Integer k){
+//        RadioGroup rdGrp = (RadioGroup) findViewById(R.id.radioGroup);
+//        for (int i = 1; i <= k; i++){
+//            RadioButton rbtn = new RadioButton(this);
+//            rbtn.setId(i);
+//            rbtn.setText(przedmioty[i]);
+//            rdGrp.addView(rbtn);
+//        }
+//    }
     private void checkRequiredFields() {
         if (!StringUtils.isEmpty(wpisOcen.getText().toString()) && StringUtils.isNumeric(wpisOcen.getText().toString())) {
             if (!wpisImie.getText().toString().isEmpty() && !wpisNazwisko.getText().toString().isEmpty() && Integer.parseInt(String.valueOf(wpisOcen.getText())) >= 5 && Integer.parseInt(String.valueOf(wpisOcen.getText())) <= 15) {
