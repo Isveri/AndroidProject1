@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private String imie;
     private String nazwisko;
     private int liczbaOcen;
-    private Double srednia;
+    private double srednia;
 
     EditText wpisOcen;
     EditText wpisImie;

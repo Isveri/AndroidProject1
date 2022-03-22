@@ -18,7 +18,9 @@ public class SecondActivity extends AppCompatActivity {
     private Button p;
     private int liczbaOcen;
     private String[] przedm;
-    private Double srednia = 3.5;
+    public static List<Integer> suma;
+    private double srednia;
+    List<ModelOceny> modelList = new ArrayList<ModelOceny>();
 
 
     @Override
@@ -31,13 +33,20 @@ public class SecondActivity extends AppCompatActivity {
         adapter.setLayoutManager(rlm);
         InteraktywnyAdapterTablicy interakt = new InteraktywnyAdapterTablicy(getListaOcen(),this);
         adapter.setAdapter(interakt);
-       // p = findViewById(R.id.sredniaBTN);
+
+
+
 
 
 
         p.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int tm = 0;
+                for (int i:suma){
+                    tm += i;
+                }
+                srednia = (double)tm/liczbaOcen;
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("srednia",srednia);
                 if(srednia<3){
@@ -51,10 +60,14 @@ public class SecondActivity extends AppCompatActivity {
         });
     }
     private List<ModelOceny> getListaOcen(){
+
         Bundle ext = getIntent().getExtras();
         liczbaOcen = ext.getInt("liczbaOcen");
         przedm = getResources().getStringArray(R.array.przedmioty);
-        List<ModelOceny> modelList = new ArrayList<ModelOceny>();
+        suma = new ArrayList<>();
+        for( int i =0 ;i<liczbaOcen;i++){
+            suma.add(0);
+        }
         for(int i = 0 ;i<liczbaOcen;i++){
             modelList.add(new ModelOceny(przedm[i]));
         }

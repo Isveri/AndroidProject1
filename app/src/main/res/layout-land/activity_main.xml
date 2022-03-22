@@ -27,10 +27,8 @@
         android:text="@string/liczba_ocen"
         app:layout_constraintBottom_toBottomOf="@+id/ocenyWpis"
         app:layout_constraintEnd_toStartOf="@+id/ocenyWpis"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nazwiskoWpis"
-        app:layout_constraintVertical_bias="0.567" />
+        app:layout_constraintTop_toBottomOf="@+id/nazwiskoWpis" />
 
     <TextView
         android:id="@+id/nazwisko"
@@ -74,9 +72,8 @@
         android:layout_height="55dp"
         android:text="@string/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.018"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ocenyWpis"
+        app:layout_constraintTop_toBottomOf="@+id/sredniaTxt"
         tools:visibility="invisible" />
 
     <EditText
@@ -87,9 +84,18 @@
         android:ems="10"
         android:hint="@string/wpisz_liczbe_ocen_5_15"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nazwiskoWpis" />
+
+    <TextView
+        android:id="@+id/sredniaTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ocenyWpis"
+        app:layout_constraintVertical_bias="0.789"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
