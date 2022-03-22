@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         srednia = ext.getDouble("srednia");
                         sredniaTxt.setVisibility(View.VISIBLE);
                         sredniaTxt.setText(getString(R.string.twojaSr)+" "+ srednia);
-                        if (result.getResultCode() == 3 && srednia>3.0) {
+                        if (result.getResultCode() == 3 && srednia>=3.0) {
                             przycisk.setText(getString(R.string.zdane));
                             przycisk.setOnClickListener(new View.OnClickListener() {
                                 @Override

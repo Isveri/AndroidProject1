@@ -1,7 +1,10 @@
 package com.example.lab1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +18,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<InteraktywnyAdapterTablicy.OcenyViewHolder>{
@@ -23,6 +28,9 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
     private LayoutInflater mPompka;
     private RadioButton radioButton;
     private RadioGroup lastCheckedRadioGroup;
+    private GetBackSum getSum;
+    private List<Integer> suma = new ArrayList<>();
+
 
 
 
@@ -30,6 +38,14 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
     public InteraktywnyAdapterTablicy(List<ModelOceny> listaOcen,Activity kontekst){
         mPompka = kontekst.getLayoutInflater();
         this.mListaOcen = listaOcen;
+        for( int i =0 ;i<listaOcen.size();i++){
+            suma.add(0);
+        }
+        try{
+            this.getSum = ((GetBackSum)mPompka.getContext());
+        }catch (ClassCastException e){
+            throw new ClassCastException(e.getMessage());
+        }
     }
 
     @NonNull
@@ -85,16 +101,23 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
 
 
                     radioButton = (RadioButton) itemView.findViewById(i);
-                    SecondActivity.suma.set((Integer) radioGroup.getTag(), Integer.parseInt((String) radioButton.getText()));
-
+//                    SecondActivity.suma.set((Integer) radioGroup.getTag(), Integer.parseInt((String) radioButton.getText()));
+                    suma.set((Integer) radioGroup.getTag(), Integer.parseInt((String) radioButton.getText()));
+                    Intent intent = new Intent();
+                    Bundle args = new Bundle();
+                    args.putSerializable("ARRAYLIST",(Serializable) suma);
+                    intent.putExtra("suma", args);
+                    getSum.getBackSum(intent);
                 }
                 lastCheckedRadioGroup = radioGroup;
 
             }
         });
-
+        }
 
         }
-        }
+    public interface GetBackSum{
+        public void getBackSum(Intent intent);
+    }
     }
 

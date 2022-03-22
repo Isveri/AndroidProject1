@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity implements InteraktywnyAdapterTablicy.GetBackSum {
     private Button p;
     private int liczbaOcen;
     private String[] przedm;
-    public static List<Integer> suma;
     private double srednia;
+    private List<Integer> suma;
     List<ModelOceny> modelList = new ArrayList<ModelOceny>();
 
 
@@ -75,4 +75,9 @@ public class SecondActivity extends AppCompatActivity {
         return modelList;
     }
 
+    @Override
+    public void getBackSum(Intent intent) {
+        Bundle args = intent.getBundleExtra("suma");
+        suma = (List<Integer>) args.getSerializable("ARRAYLIST");
+    }
 }
