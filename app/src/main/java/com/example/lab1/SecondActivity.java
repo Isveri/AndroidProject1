@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SecondActivity extends AppCompatActivity {
-    private RecyclerView adapter;
     private Button p;
     private int liczbaOcen;
     private String[] przedm;
@@ -28,11 +27,13 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity);
         p = findViewById(R.id.sredniaBTN);
-        adapter = (RecyclerView) findViewById(R.id.przedmioty);
-        LinearLayoutManager rlm = new LinearLayoutManager(this);
-        adapter.setLayoutManager(rlm);
-        InteraktywnyAdapterTablicy interakt = new InteraktywnyAdapterTablicy(getListaOcen(),this);
-        adapter.setAdapter(interakt);
+
+        RecyclerView numberRecyclerView=
+                findViewById(R.id.przedmioty);
+        InteraktywnyAdapterTablicy myAdapter=new InteraktywnyAdapterTablicy(getListaOcen(),this);
+        numberRecyclerView.setAdapter(myAdapter);
+        numberRecyclerView.setLayoutManager(
+                new LinearLayoutManager(this));
 
 
 

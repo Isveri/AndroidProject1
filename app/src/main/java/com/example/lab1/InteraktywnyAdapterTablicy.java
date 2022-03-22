@@ -24,7 +24,7 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
     private RadioButton radioButton;
     private RadioGroup lastCheckedRadioGroup;
 
-   // private AdapterView.OnItemClickListener onItemClickListener;
+
 
 
     public InteraktywnyAdapterTablicy(List<ModelOceny> listaOcen,Activity kontekst){
@@ -43,10 +43,11 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
     public void onBindViewHolder(@NonNull OcenyViewHolder holder, int position) {
         ModelOceny ocena = mListaOcen.get(position);
 
-        //holder.mGroup = new RadioGroup(holder.mGroup.getContext());
+
         holder.mText.setText(ocena.getNazwa());
+        holder.mGroup.setTag(position);
         int id = (position*16);
-//        holder.mGroup.setId(position);
+
         for(int oc:ocena.getOceny()) {
             RadioButton rb = new RadioButton(InteraktywnyAdapterTablicy.this.mPompka.getContext());
             rb.setId(id++);
@@ -62,9 +63,7 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
         return mListaOcen.size();
     }
 
-//    public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
-//        this.onItemClickListener = onItemClickListener;
-//    }
+
 
 
 
@@ -77,20 +76,16 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
             super(itemView);
             mText = itemView.findViewById(R.id.package_name);
             mGroup =(RadioGroup) itemView.findViewById(R.id.radioGroup);
-//            mGroup = new RadioGroup(InteraktywnyAdapterTablicy.this.mPompka.getContext());
-
 
        mGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (lastCheckedRadioGroup != null
-                        && lastCheckedRadioGroup.getCheckedRadioButtonId()
-                        != radioGroup.getCheckedRadioButtonId()
-                        && lastCheckedRadioGroup.getCheckedRadioButtonId() != -1) {
-                    //lastCheckedRadioGroup.clearCheck();
+                lastCheckedRadioGroup = radioGroup;
+                if (lastCheckedRadioGroup.getCheckedRadioButtonId() != -1) {
+
 
                     radioButton = (RadioButton) itemView.findViewById(i);
-                    SecondActivity.suma.set(radioGroup.getId(), Integer.parseInt((String) radioButton.getText()));
+                    SecondActivity.suma.set((Integer) radioGroup.getTag(), Integer.parseInt((String) radioButton.getText()));
 
                 }
                 lastCheckedRadioGroup = radioGroup;
