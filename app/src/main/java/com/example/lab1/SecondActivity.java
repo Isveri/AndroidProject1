@@ -22,6 +22,11 @@ public class SecondActivity extends AppCompatActivity implements InteraktywnyAda
     List<ModelOceny> modelList = new ArrayList<ModelOceny>();
 
 
+    /**
+     *
+     * Funkcja wywoływana przy tworzeniu aktywności, ustawia odpowiednie pola do tych na ekranie,
+     * ustawia wybraną ilosc ocen w wierszach za pomocą RecyclerView
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +41,11 @@ public class SecondActivity extends AppCompatActivity implements InteraktywnyAda
                 new LinearLayoutManager(this));
 
 
-
-
-
+        /**
+         * Listener przycisku obliczający srednią zaznaczonych ocen i wysyłający je do głównej aktywności
+         * tak jak napisałem wczesniej jak srednia <3 to resul 2 jak >3 to resul 3 tak zeby bylo wiadomo jakie
+         * info dac na ekranie głównym i jaki komunikat ma dostac uzytkownik
+         */
 
         p.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +67,10 @@ public class SecondActivity extends AppCompatActivity implements InteraktywnyAda
             }
         });
     }
+
+    /**
+     * Funckja zwracająca listę wszystkich ocen
+     */
     private List<ModelOceny> getListaOcen(){
 
         Bundle ext = getIntent().getExtras();
@@ -75,6 +86,9 @@ public class SecondActivity extends AppCompatActivity implements InteraktywnyAda
         return modelList;
     }
 
+    /**
+     * Nadpisanie funkcji zaimplementowanego interfejsu w celu pobrania sumy zaznaczonych ocen z przedmiotów
+     */
     @Override
     public void getBackSum(Intent intent) {
         Bundle args = intent.getBundleExtra("suma");

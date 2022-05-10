@@ -32,8 +32,9 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
     private List<Integer> suma = new ArrayList<>();
 
 
-
-
+    /**
+     * konstruktor ustawiający wstepne wartości obiektu
+     */
 
     public InteraktywnyAdapterTablicy(List<ModelOceny> listaOcen,Activity kontekst){
         mPompka = kontekst.getLayoutInflater();
@@ -48,6 +49,11 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
         }
     }
 
+    /**
+     * Nadpisanie metod
+     * onCreateViewHolder - w momencie tworzenia nowego ViewHoldera zwracany jest obiekt
+     * klasy OcenyViewHolder na podstawie layoutu wiersz_oceny, klasa OcenyViewHolder widoczna jest nizej
+     */
     @NonNull
     @Override
     public OcenyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -55,6 +61,11 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
         return new OcenyViewHolder(wiersz);
     }
 
+    /**
+     * Z tego co rozumiem to dla każdego elementu w liście wykonywana jest ta metoda
+     * ustawiane jest tu id dla każdego wiersza, nazwa dla oceny, a także tag dla grupy by wybrac potem 1 wartosc
+     * potem w pętli tworzone są radiobuttony dla każdego radiogroupa z ocenami {2-5}, na koncu dodawane jest to do widoku
+     */
     @Override
     public void onBindViewHolder(@NonNull OcenyViewHolder holder, int position) {
         ModelOceny ocena = mListaOcen.get(position);
@@ -74,14 +85,20 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
 
     }
 
+    /**
+     * Nadpisanie funckji zwracającej rozmiar tablicy
+     * potrzebne jest bo inaczej nie bedzie działalo
+     */
     @Override
     public int getItemCount() {
         return mListaOcen.size();
     }
 
 
-
-
+    /**
+     * Klasa odpowiedzialna za wiersz w RecyclerView
+     * Tutaj ustawiane są które pola mają odnosić się do jakich elementow na ekranie
+      */
 
     public class OcenyViewHolder extends RecyclerView.ViewHolder {
 
@@ -93,7 +110,11 @@ public class InteraktywnyAdapterTablicy extends RecyclerView.Adapter<Interaktywn
             mText = itemView.findViewById(R.id.package_name);
             mGroup =(RadioGroup) itemView.findViewById(R.id.radioGroup);
 
-       mGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        /**
+        * Dodanie listenera obsługującego zmianę zaznaczonego radiobuttona,
+         * liczona jest tu suma zaznaczonych elementów i wysyłana
+        */
+            mGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 lastCheckedRadioGroup = radioGroup;

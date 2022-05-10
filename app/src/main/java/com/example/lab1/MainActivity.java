@@ -24,6 +24,9 @@ import android.widget.Toast;
 import org.apache.commons.lang3.StringUtils;
 import org.w3c.dom.Text;
 
+/**
+ * Główny widok aplikacji
+ */
 public class MainActivity extends AppCompatActivity {
     private String imie;
     private String nazwisko;
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     TextView sredniaTxt;
     Button przycisk;
 
+    /**
+     * Metoda wywoływana przy tworzeniu widoku, przypisuje ona odpowiednie pola do tych w widoku
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
         Toast blad = Toast.makeText(this, getString(R.string.bledne_dane), Toast.LENGTH_SHORT);
 
 
+        /**
+         * Wywołanie aktywności oczekującej na rezultat, w momencie kiedy z drugiej aktywności dostaniemy
+         * odpowiedz w postaci extra i resultatu, możemy sprawdzić czy średnia zaznaczonych tam ocen jest większa niż 3
+         * lub mniejsza i na podstawie tego ustawić odpowiednią odpowiedz (tak jak tam w zadaniu bylo).
+         * W przypadku sredniej powyzej 3 przycisk zmienia nazwe na Super i po wcisnieciu wyswietla sie okno powiadomienia
+         * z odpowiednia informacja, w przypadku sredniej mniejszej jest analogicznie tylko z innymi odpowiedzniami.
+         */
         ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -104,6 +117,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+        /**
+         * Ustawienie listenerów na pola tekstowe w celu walidacji wprowadzanych danych,
+         * Działa w momencie zmiany focusu z pola tekstowego
+         */
         wpisImie.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -117,29 +134,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        wpisImie.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-////                if(imie.equals("")){
-////                    wpisImie.setError("Niepoprawne dane");
-////                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//                imie = wpisImie.getText().toString();
-//                checkRequiredFields();
-//                if (imie.equals("")) {
-//                    wpisImie.setError("Niepoprawne dane");
-//                    blad.show();
-//                }
-//            }
-//        });
         wpisNazwisko.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -151,29 +145,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-//        wpisNazwisko.addTextChangedListener((new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-////                if(nazwisko.equals("")){
-////                    wpisNazwisko.setError("Niepoprawne dane");
-////                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//                nazwisko = wpisNazwisko.getText().toString();
-//                checkRequiredFields();
-//                if (nazwisko.equals("")) {
-//                    wpisNazwisko.setError("Niepoprawne dane");
-//                    blad.show();
-//                }
-//            }
-//        }));
 
 
         wpisOcen.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -205,38 +176,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//        wpisOcen.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-////                if(liczbaOcen <5 || liczbaOcen > 15 ){
-////                    wpisOcen.setError("Niepoprawne dane");
-////                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//                if (wpisOcen.getText().toString().equals("")) {
-//                    wpisOcen.setError("Niepoprawne dane");
-//                    blad.show();
-//                    checkRequiredFields();
-//                } else {
-//                    liczbaOcen = Integer.valueOf(String.valueOf(wpisOcen.getText()));
-//                    checkRequiredFields();
-//                    if (liczbaOcen < 5 || liczbaOcen > 15) {
-//                        wpisOcen.setError("Niepoprawne dane");
-//                        blad.show();
-//                    }
-//                }
-//            }
-//        });
     }
 
+    /**
+     * funckja walidująca pola
+     */
     private void checkRequiredFields() {
         if (!StringUtils.isEmpty(wpisOcen.getText().toString()) && StringUtils.isNumeric(wpisOcen.getText().toString())) {
             if (!wpisImie.getText().toString().isEmpty() && !wpisNazwisko.getText().toString().isEmpty() && Integer.parseInt(String.valueOf(wpisOcen.getText())) >= 5 && Integer.parseInt(String.valueOf(wpisOcen.getText())) <= 15) {
